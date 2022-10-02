@@ -2,31 +2,23 @@
 // @name         sb.js userscript
 // @description  SponsorBlock userscript
 // @namespace    mchang.name
-// @homepage     https://github.com/mchangrh/sb.js
+// @updateURL    https://github.com/Apina-32/sb.js/raw/main/docs/sb.user.js
+// @homepage     https://github.com/Apina-32/sb.js
 // @icon         https://mchangrh.github.io/sb.js/icon.png
 // @version      1.2.3
 // @license      LGPL-3.0-or-later
-// @match        https://www.youtube.com/watch*
+// @match        https://www.youtube.com/*
 // @connect      sponsor.ajay.app
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_info
+// @grant        GM_addStyle
+// @grant        GM_registerMenuCommand
 // @require      https://greasyfork.org/scripts/395037-monkeyconfig-modern/code/MonkeyConfig%20Modern.js?version=764968
 // ==/UserScript==
 /* START OF SETTINGS */
 
 // https://wiki.sponsor.ajay.app/w/Types
-let categories = [
-  "sponsor",
-  "selfpromo",
-  "interaction",
-  "intro",
-  "outro",
-  "preview",
-  "music_offtopic",
-  "exclusive_access",
-  "poi_highlight"
-]
 let actionTypes = [
   "skip",
   "mute",
@@ -41,41 +33,60 @@ let highlightKey = "Enter"
 
 /* END OF SETTINGS */
 
-const settings = {
-  "categories": categories,
-  "actionTypes": actionTypes,
-  "skipThreshold": skipThreshold,
-  "serverEndpoint": serverEndpoint,
-  "skipTracking": skipTracking,
-  "highlightKey": highlightKey
-}
-
-const GM_getJson = (key) => {
-  try {
-    return JSON.parse(GM_getValue(key))
-  } catch (e) {
-    return undefined
+const cfg = new MonkeyConfig({
+  title: 'Settings',
+  menuCommand: true,
+  params: {
+    "sponsor": {
+      type: 'checkbox',
+      default: true
+    },
+    selfpromo: {
+      type: 'checkbox',
+      default: true
+    },
+    interaction: {
+      type: 'checkbox',
+      default: true
+    },
+    intro: {
+        type: 'checkbox',
+        default: true
+    },
+    outro: {
+        type: 'checkbox',
+        default: true
+    },
+    preview: {
+        type: 'checkbox',
+        default: true
+    },
+    music_offtopic: {
+        type: 'checkbox',
+        default: true
+    },
+    exclusive_access: {
+        type: 'checkbox',
+        default: true
+    },
+    poi_highlight: {
+        type: 'checkbox',
+        default: true
+    }
   }
-}
+});
 
-const currentScriptVersion = GM_info.script.version;
+const categories = [];
+if(cfg.get("sponsor")) categories.push("sponsor");
+if(cfg.get("selfpromo")) categories.push("selfpromo");
+if(cfg.get("interaction")) categories.push("interaction");
+if(cfg.get("intro")) categories.push("intro");
+if(cfg.get("outro")) categories.push("outro");
+if(cfg.get("preview")) categories.push("preview");
+if(cfg.get("music_offtopic")) categories.push("music_offtopic");
+if(cfg.get("exclusive_access")) categories.push("exclusive_access");
+if(cfg.get("poi_highlight")) categories.push("poi_highlight");
 
-if(GM_getValue("version") !== currentScriptVersion) {
-  // Load settings from previous version
-  const oldSettings = GM_getJson("settings");
-  if(oldSettings) {
-    categories = oldSettings.categories;
-    actionTypes = oldSettings.actionTypes;
-    skipThreshold = oldSettings.skipThreshold;
-    serverEndpoint = oldSettings.serverEndpoint;
-    skipTracking = oldSettings.skipTracking;
-    highlightKey = oldSettings.highlightKey;
-  }
-  GM_setValue("version", currentScriptVersion);
-} else {
-  GM_setValue("settings", JSON.stringify(settings));
-  GM_setValue("version", currentScriptVersion);
-}
 /* sb.js - SponsorBlock for restrictive environments - by mchangrh
 
 https://github.com/mchangrh/sb.js
