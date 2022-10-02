@@ -14,5 +14,5 @@
 // @grant        GM_info
 // @grant        GM_addStyle
 // @grant        GM_registerMenuCommand
-// @require      https://greasyfork.org/scripts/395037-monkeyconfig-modern/code/MonkeyConfig%20Modern.js?version=764968
+// @require      https://raw.github.com/odyniec/MonkeyConfig/master/monkeyconfig.js
 // ==/UserScript==

@@ -7,6 +7,13 @@
 
 [SponsorBlock](https://github.com/ajayyy/SponsorBlock) for restrictive environments. When possible, use the browser extension.
 
+
+## Changes in this fork
+- Moved most of the settings to [MonkeyConfig](https://github.com/odyniec/MonkeyConfig) to make the setting persistent over script updates.
+
+Updated userscript: [sb.user.js](https://github.com/Apina-32/sb.js/raw/main/docs/sb.user.js)
+
+
 ## CDNs
 <p align="center">
     <a href="https://mchangrh.github.io/sb.js"><img src="https://img.shields.io/static/v1?label=%20&message=GitHub%20Pages&color=222&logo=GitHub%20Pages" alt="Badge"></img></a>
