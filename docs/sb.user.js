@@ -8,12 +8,15 @@
 // @license      LGPL-3.0-or-later
 // @match        https://www.youtube.com/watch*
 // @connect      sponsor.ajay.app
-// @grant        none
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_info
+// @require      https://greasyfork.org/scripts/395037-monkeyconfig-modern/code/MonkeyConfig%20Modern.js?version=764968
 // ==/UserScript==
 /* START OF SETTINGS */
 
 // https://wiki.sponsor.ajay.app/w/Types
-const categories = [
+let categories = [
   "sponsor",
   "selfpromo",
   "interaction",
@@ -24,19 +27,55 @@ const categories = [
   "exclusive_access",
   "poi_highlight"
 ]
-const actionTypes = [
+let actionTypes = [
   "skip",
   "mute",
   "full",
   "poi"
 ]
-const skipThreshold = [0.2, 1] // skip from between time-[0] and time+[1]
-const serverEndpoint = "https://sponsor.ajay.app"
-const skipTracking = true
-const highlightKey = "Enter"
+let skipThreshold = [0.2, 1] // skip from between time-[0] and time+[1]
+let serverEndpoint = "https://sponsor.ajay.app"
+let skipTracking = true
+let highlightKey = "Enter"
 // https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
 
 /* END OF SETTINGS */
+
+const settings = {
+  "categories": categories,
+  "actionTypes": actionTypes,
+  "skipThreshold": skipThreshold,
+  "serverEndpoint": serverEndpoint,
+  "skipTracking": skipTracking,
+  "highlightKey": highlightKey
+}
+
+const GM_getJson = (key) => {
+  try {
+    return JSON.parse(GM_getValue(key))
+  } catch (e) {
+    return undefined
+  }
+}
+
+const currentScriptVersion = GM_info.script.version;
+
+if(GM_getValue("version") !== currentScriptVersion) {
+  // Load settings from previous version
+  const oldSettings = GM_getJson("settings");
+  if(oldSettings) {
+    categories = oldSettings.categories;
+    actionTypes = oldSettings.actionTypes;
+    skipThreshold = oldSettings.skipThreshold;
+    serverEndpoint = oldSettings.serverEndpoint;
+    skipTracking = oldSettings.skipTracking;
+    highlightKey = oldSettings.highlightKey;
+  }
+  GM_setValue("version", currentScriptVersion);
+} else {
+  GM_setValue("settings", JSON.stringify(settings));
+  GM_setValue("version", currentScriptVersion);
+}
 /* sb.js - SponsorBlock for restrictive environments - by mchangrh
 
 https://github.com/mchangrh/sb.js

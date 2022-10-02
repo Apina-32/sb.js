@@ -8,5 +8,8 @@
 // @license      LGPL-3.0-or-later
 // @match        https://www.youtube.com/watch*
 // @connect      sponsor.ajay.app
-// @grant        none
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_info
+// @require      https://greasyfork.org/scripts/395037-monkeyconfig-modern/code/MonkeyConfig%20Modern.js?version=764968
 // ==/UserScript==
