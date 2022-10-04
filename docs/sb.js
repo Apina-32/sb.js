@@ -1,4 +1,6 @@
+
 /* START OF SETTINGS */
+// Warning: editing setting here will disable auto updates
 
 // https://wiki.sponsor.ajay.app/w/Types
 let actionTypes = [
@@ -13,62 +15,44 @@ let skipTracking = true
 let highlightKey = "Enter"
 // https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
 
-/* END OF SETTINGS */
+// DO NOT EDIT BELOW THIS LINE
+
+const settings = [
+    "sponsor",
+    "selfpromo",
+    "interaction",
+    "intro",
+    "outro",
+    "preview",
+    "music_offtopic",
+    "exclusive_access",
+    "poi_highlight"
+]
+
+const params = () => {
+    const out = {}
+    settings.forEach(setting => {
+        out[setting] = {
+            type: 'checkbox',
+            default: true
+        }
+    });
+    return out;
+}
+
 
 const cfg = new MonkeyConfig({
   title: 'Settings',
   menuCommand: true,
-  params: {
-    "sponsor": {
-      type: 'checkbox',
-      default: true
-    },
-    selfpromo: {
-      type: 'checkbox',
-      default: true
-    },
-    interaction: {
-      type: 'checkbox',
-      default: true
-    },
-    intro: {
-        type: 'checkbox',
-        default: true
-    },
-    outro: {
-        type: 'checkbox',
-        default: true
-    },
-    preview: {
-        type: 'checkbox',
-        default: true
-    },
-    music_offtopic: {
-        type: 'checkbox',
-        default: true
-    },
-    exclusive_access: {
-        type: 'checkbox',
-        default: true
-    },
-    poi_highlight: {
-        type: 'checkbox',
-        default: true
-    }
-  }
+  params: params()
 });
 
 const categories = [];
-if(cfg.get("sponsor")) categories.push("sponsor");
-if(cfg.get("selfpromo")) categories.push("selfpromo");
-if(cfg.get("interaction")) categories.push("interaction");
-if(cfg.get("intro")) categories.push("intro");
-if(cfg.get("outro")) categories.push("outro");
-if(cfg.get("preview")) categories.push("preview");
-if(cfg.get("music_offtopic")) categories.push("music_offtopic");
-if(cfg.get("exclusive_access")) categories.push("exclusive_access");
-if(cfg.get("poi_highlight")) categories.push("poi_highlight");
+settings.forEach(setting => {
+    if(cfg.get(setting)) categories.push(setting);
+});
 
+/* END OF SETTINGS */
 /* sb.js - SponsorBlock for restrictive environments - by mchangrh
 
 https://github.com/mchangrh/sb.js

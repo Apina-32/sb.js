@@ -11,7 +11,6 @@
 // @connect      sponsor.ajay.app
 // @grant        GM_getValue
 // @grant        GM_setValue
-// @grant        GM_info
 // @grant        GM_addStyle
 // @grant        GM_registerMenuCommand
 // @require      https://raw.github.com/odyniec/MonkeyConfig/master/monkeyconfig.js
