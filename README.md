@@ -9,7 +9,7 @@
 
 
 ## Changes in this fork
-- Moved most of the settings to [MonkeyConfig](https://github.com/odyniec/MonkeyConfig) to make the setting persistent over script updates.
+- Moved most of the settings to [MonkeyConfig](https://github.com/odyniec/MonkeyConfig) to make the settings persistent over script updates.
 
 Updated userscript: [sb.user.js](https://github.com/Apina-32/sb.js/raw/main/docs/sb.user.js)
 
