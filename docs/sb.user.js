@@ -18,18 +18,13 @@
 // @require      https://raw.github.com/odyniec/MonkeyConfig/master/monkeyconfig.js
 // ==/UserScript==
 
-/* START OF SETTINGS */
 // Warning: editing setting here will disable auto updates
 // To edit settings, use the settings menu by clicking the tampermonkey icon on the top right of your browser
-
-// https://wiki.sponsor.ajay.app/w/Types
 
 let skipThreshold = [0.2, 1] // skip from between time-[0] and time+[1]
 let serverEndpoint = "https://sponsor.ajay.app"
 let skipTracking = true
 let highlightKey = "Enter"
-// https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
-
 
 const defaultCategories = [
     "sponsor",
@@ -62,9 +57,9 @@ const createCheckboxes = (list) => {
 }
 
 const categoriesConfig = new MonkeyConfig({
-  title: 'Adjust SponsorBlock categories',
-  menuCommand: true,
-  params: createCheckboxes(defaultCategories)
+    title: 'Adjust SponsorBlock categories',
+    menuCommand: true,
+    params: createCheckboxes(defaultCategories)
 });
 
 const actionsConfig = new MonkeyConfig({
@@ -111,7 +106,6 @@ serverEndpoint = miscConfig.get("serverEndpoint");
 skipTracking = miscConfig.get("skipTracking");
 highlightKey = miscConfig.get("highlightKey");
 
-/* END OF SETTINGS */
 /* sb.js - SponsorBlock for restrictive environments - by mchangrh
 
 https://github.com/mchangrh/sb.js
@@ -119,7 +113,7 @@ https://github.com/mchangrh/sb.js
 Uses SponsorBlock data licensed used under CC BY-NC-SA 4.0 from https://sponsor.ajay.app/
 
 LICENCED UNDER LGPL-3.0-or-later */
-const VERSION = "1.2.3" // version constant
+const VERSION = "1.2.4" // version constant
 
 // initial setup
 let video, videoID, muteEndTime
