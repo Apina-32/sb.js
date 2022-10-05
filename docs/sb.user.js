@@ -18,7 +18,7 @@
 // @require      https://raw.github.com/odyniec/MonkeyConfig/master/monkeyconfig.js
 // ==/UserScript==
 
-// Warning: editing setting here will disable auto updates
+// Warning: editing settings here will disable auto updates
 // To edit settings, use the settings menu by clicking the tampermonkey icon on the top right of your browser
 
 let skipThreshold = [0.2, 1] // skip from between time-[0] and time+[1]
