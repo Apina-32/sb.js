@@ -1,6 +1,10 @@
 <p align="center"><img src="docs/icon.png"></p>
 
 # SB.js
+![GitHub file size in bytes](https://img.shields.io/github/size/Apina-32/sb.js/docs/sb.js)
+![GitHub file size in bytes](https://img.shields.io/github/size/Apina-32/sb.js/docs/sb.min.js?label=size%20%28min%29)
+![GitHub file size in bytes](https://img.shields.io/github/size/Apina-32/sb.js/docs/sb.user.js?label=size%20%28userscript%29)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/Apina-32/sb.js)
 
 [SponsorBlock](https://github.com/ajayyy/SponsorBlock) for restrictive environments. When possible, use the browser extension.
 
